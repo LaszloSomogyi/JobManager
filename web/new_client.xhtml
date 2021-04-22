@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Új kliens felvétele</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            Kliens neve:
+            <h:inputText value="#{lister.selectedClient.clientName}">
+                <f:validateLength maximum="100"/>
+            </h:inputText>
+            Kliens emailje:
+            <h:inputText value="#{lister.selectedClient.clientEmail}">
+                <f:validateRegex pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"/>
+            </h:inputText> <br/>
+            <h:commandButton value="Mentés és visszatérés az előző oldalra" action="#{lister.saveClient()}"/>
+            <h:commandButton value="Visszatérés az előző oldalra mentés nélkül" action="index" immediate="true"/>
+        </h:form>
+    </h:body>
+</html>
+

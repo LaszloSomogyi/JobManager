@@ -8,6 +8,8 @@
     </h:head>
     <h:body>
         <h:form>
+            <h:commandButton value="Új kliens felvétele" action="#{lister.newClient()}"/> <br/>
+            
             Állások keresése:
             <h:inputText value="#{lister.positionName}"/>
             <h:commandButton value="Keress!!" action="#{lister.searchPosition()}"/>

@@ -34,6 +34,26 @@ public class Lister {
         positions = query.list();
         session.close();
     }
+    
+    public String newClient(){
+        Client newCli = new Client();
+        selectedClient = newCli;
+        return "new_client";
+    }
+    
+    public String saveClient(){
+        Session session = hibernate.HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(selectedClient);
+        session.getTransaction().commit();
+        session.close();
+        
+        clients.add(selectedClient);
+        
+        return "index";
+    }
+    
+    
 
     public String getPositionName() {
         return positionName;
