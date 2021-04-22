@@ -1,25 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mgbeans;
 
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.hibernate.Session;
+import pojos.Client;
+import pojos.Position;
 
-/**
- *
- * @author Somogyi László <proceed step by step>
- */
+
 @ManagedBean
 @SessionScoped
 public class Lister {
 
-    /**
-     * Creates a new instance of Lister
-     */
+    String positionName;
+    List<Client> clients;
+    List<Position> positions;
+    Client selectedClient;
+    Position selectedPosition;
+    
     public Lister() {
+        Session session = hibernate.HibernateUtil.getSessionFactory().openSession();
+        clients = session.createQuery("FROM Client").list();
+        positions = session.createQuery("FROM Position").list();
+        session.close();
     }
     
 }
